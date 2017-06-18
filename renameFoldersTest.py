@@ -26,22 +26,7 @@ class renamerTestCase(unittest.TestCase):
 		before = "2017 - 06 - 17 - Vút (Thai) ('Hai') (Mauricè Paul Bonk)"
 		after = ["2017 - 06 - 17", "Vút (Thai) ('Hai')", "Mauricè Paul Bonk"]
 		self.assertEqual(after, renameFolders.split(before))
-		
-		
-	def testReplaceSpace(self):
-		before = " "
-		after = "_"
-		self.assertEqual(after, renameFolders.rename(before))
-		
-	def testReplaceBracketOpen(self):
-		before = "("
-		after = "_"
-		self.assertEqual(after, renameFolders.rename(before))
-		
-# 	def testReplaceBracketClose(self):
-# 		before = ")"
-# 		after = ""
-# 		self.assertEqual(after, renameFolders.rename(before))	
+			
 		
 	def testFormatDate(self):
 		before = "2017.06.17"

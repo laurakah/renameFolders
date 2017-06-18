@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-TRANS = {
+TRANSLATE = {
 	u"ß": "ss",
 	u"ä": "ae",
 	u"ö": "oe",
@@ -26,8 +26,8 @@ TRANS = {
 def replaceChars(chars_in):
 	chars_out = ""
 	for c in chars_in:
-		if c in TRANS.keys():
-			chars_out += TRANS[c]	
+		if c in TRANSLATE.keys():
+			chars_out += TRANSLATE[c]	
 		else:
 			chars_out += c
 	return chars_out

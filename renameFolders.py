@@ -2,10 +2,6 @@
 
 import re
 import string
-
-def rename(str_in):
-	str_out = "_"
-	return str_out
 	
 def split(str_in):
 	res = re.match(r"(?P<date>.*) - (?P<accountName>.*) \((?P<accountOwner>.*)\)", str_in)
