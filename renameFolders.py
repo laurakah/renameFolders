@@ -2,6 +2,7 @@
 
 import re
 import string
+import os
 import replaceCharacters
 	
 def splitFolderName(str_in):
@@ -26,7 +27,7 @@ def addSeperators(array_out):
 	newName = "%s%s%s%s%s" % (array_out[0], nameSep, array_out[1], nameSep, array_out[2])
 	return newName
 	
-def renameFolder(oldFolderName):
+def formatFolderName(oldFolderName):
 # 	if not replaceCharacters.isUnicode(oldFolderName):			---> TODO:	needs to be replaced!
 # 		raise Exception("Argument is not unicode!")
 	folderNameParts = splitFolderName(oldFolderName)
@@ -34,3 +35,11 @@ def renameFolder(oldFolderName):
 	newFolderName = addSeperators(folderNameParts)
 	newFolderName = replaceCharacters.replaceChars(newFolderName)
 	return newFolderName
+	
+def renameFolder(before_dir):
+	after_dir = ""
+	oldFolderName = os.path.basename(before_dir)
+ 	newFolderName = formatFolderName(oldFolderName)
+	after_dir = os.path.join(os.path.split(before_dir)[0], newFolderName)
+	os.rename(before_dir, after_dir)
+	return after_dir	
