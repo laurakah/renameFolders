@@ -2,8 +2,9 @@
 
 import re
 import string
+import replaceCharacters
 	
-def split(str_in):
+def splitFolderName(str_in):
 	res = re.match(r"(?P<date>.*) - (?P<accountName>.*) \((?P<accountOwner>.*)\)", str_in)
 	if not res:
 		array_out = []
@@ -13,7 +14,7 @@ def split(str_in):
 
 def formatDate(date_in):
 	dateSep = "-"
-	res = re.match(r"(?P<year>\d+)[\. -_](?P<month>\d+)[\. -_](?P<day>\d+)", date_in)
+	res = re.match(r"(?P<year>\d+)[\. \-_]+(?P<month>\d+)[\. \-_]+(?P<day>\d+)", date_in)
 	if not res:
 		date_out = ""
 	else:
@@ -24,3 +25,9 @@ def addSeperators(array_out):
 	nameSep = "__"
 	newName = "%s%s%s%s%s" % (array_out[0], nameSep, array_out[1], nameSep, array_out[2])
 	return newName
+	
+def renameFolder(oldFolderName):
+	folderNameParts = splitFolderName(oldFolderName)
+	folderNameParts[0] = formatDate(folderNameParts[0])
+	newFolderName = addSeperators(folderNameParts)
+	return newFolderName
