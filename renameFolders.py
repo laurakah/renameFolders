@@ -20,3 +20,7 @@ def formatDate(date_in):
 		date_out = "%s%s%s%s%s" % (res.group("year"), dateSep, res.group("month"), dateSep,  res.group("day"))	
 	return date_out		
 	
+def addSeperators(array_out):
+	nameSep = "__"
+	newName = "%s%s%s%s%s" % (array_out[0], nameSep, array_out[1], nameSep, array_out[2])
+	return newName
