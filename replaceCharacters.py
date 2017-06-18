@@ -24,7 +24,7 @@ TRANSLATE = {
 }
 
 
-def replaceChars(chars_in):
+def replaceCharsByTranslators(chars_in):
 	chars_out = ""
 	for c in chars_in:
 		if c in TRANSLATE.keys():
@@ -33,3 +33,11 @@ def replaceChars(chars_in):
 			chars_out += c
 	return chars_out
 
+def replaceCharsDefault(unicode_chars_in):
+	ascii_chars_out = ""
+	for c in unicode_chars_in:
+		try:
+			ascii_chars_out += c.encode("ascii")
+		except UnicodeEncodeError:
+			ascii_chars_out += "?"	
+	return ascii_chars_out

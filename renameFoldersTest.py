@@ -32,12 +32,17 @@ class renamerTestCase(unittest.TestCase):
 		after = "2017-06-17"	
 		self.assertEqual(after, renameFolders.formatDate(before))
 		
-	def testSpecialCharacterReplacement(self):
+	def testReplaceCharsByTranslators(self):
 		before = u"ä ö ü á é ú ó í à è ù ò ì â ê û ô î ß"
 		after = "ae_oe_ue_a_e_u_o_i_a_e_u_o_i_a_e_u_o_i_ss"
-		self.assertEqual(after, replaceCharacters.replaceChars(before))	
+		self.assertEqual(after, replaceCharacters.replaceCharsByTranslators(before))	
 		
-	def testAddNameSeperators(self):
+	def testReplaceCharsDefault(self):
+		before = u"տպوى的使пр刷及ობסתνόhallo"
+		after = "????????????????hallo"
+		self.assertEqual(after, replaceCharacters.replaceCharsDefault(before))
+		
+	def testAddSeperators(self):
 		before = ["2017-06-17", "Ponyhof", "Zwisele"]
 		after = "2017-06-17__Ponyhof__Zwisele"
 		self.assertEqual(after, renameFolders.addSeperators(before))	
