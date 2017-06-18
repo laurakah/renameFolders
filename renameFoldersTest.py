@@ -42,6 +42,11 @@ class renamerTestCase(unittest.TestCase):
 		after = "????????????????hallo"
 		self.assertEqual(after, replaceCharacters.replaceCharsDefault(before))
 		
+	def testReplaceChars(self):
+		before = u"aäáàâ刷及"
+		after = "aaeaaa??"
+		self.assertEqual(after, replaceCharacters.replaceChars(before))	
+		
 	def testAddSeperators(self):
 		before = ["2017-06-17", "Ponyhof", "Zwisele"]
 		after = "2017-06-17__Ponyhof__Zwisele"

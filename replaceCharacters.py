@@ -23,7 +23,6 @@ TRANSLATE = {
 	u" ": "_"
 }
 
-
 def replaceCharsByTranslators(chars_in):
 	chars_out = ""
 	for c in chars_in:
@@ -41,3 +40,8 @@ def replaceCharsDefault(unicode_chars_in):
 		except UnicodeEncodeError:
 			ascii_chars_out += "?"	
 	return ascii_chars_out
+	
+def replaceChars(chars_in):
+	chars_out = replaceCharsByTranslators(chars_in)
+	chars_out = replaceCharsDefault(chars_out)
+	return chars_out
