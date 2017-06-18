@@ -27,7 +27,10 @@ def addSeperators(array_out):
 	return newName
 	
 def renameFolder(oldFolderName):
+# 	if not replaceCharacters.isUnicode(oldFolderName):			---> TODO:	needs to be replaced!
+# 		raise Exception("Argument is not unicode!")
 	folderNameParts = splitFolderName(oldFolderName)
 	folderNameParts[0] = formatDate(folderNameParts[0])
 	newFolderName = addSeperators(folderNameParts)
+	newFolderName = replaceCharacters.replaceChars(newFolderName)
 	return newFolderName

@@ -41,10 +41,10 @@ class renamerTestCase(unittest.TestCase):
 		after = "2017-06-17__Ponyhof__Zwisele"
 		self.assertEqual(after, renameFolders.addSeperators(before))
 		
-# 	def testRenameFolder(self):
-# 		before = "2017 - 06 - 17 - Vút Thai \"Hai\"使 (Mauricè Paul Bonk)"
-# 		after = "2017-06-17__Vut_Thai_\"Hai\"?__Maurice_Paul_Bonk"
-# 		self.assertEqual(after, renameFolders.renameFolder(before))
+	def testRenameFolder(self):
+		before = u"2017 - 06 - 17 - Vút Thai \"Hai\"使 (Mauricè Paul Bonk)"
+		after = "2017-06-17__Vut_Thai_\"Hai\"?__Maurice_Paul_Bonk"
+		self.assertEqual(after, renameFolders.renameFolder(before))	
 		
 	def testReplaceCharsByTranslators(self):
 		before = u"ä ö ü á é ú ó í à è ù ò ì â ê û ô î ß"
@@ -60,6 +60,15 @@ class renamerTestCase(unittest.TestCase):
 		before = u"aäáàâ刷及"
 		after = "aaeaaa??"
 		self.assertEqual(after, replaceCharacters.replaceChars(before))		
+		
+		
+		
+		
+#TODO:	--->	needs to be replaced!		
+# 	def testRenameFolderThrowNotUnicodeException(self):
+# 		with self.assertRaises(Exception) as e:
+# 			renameFolder("bad_ascii_folder_name")	
+# 		self.assertTrue("Argument is not unicode!" in e.exception)
 
 
 		

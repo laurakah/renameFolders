@@ -31,13 +31,21 @@ def replaceCharsByTranslators(chars_in):
 		else:
 			chars_out += c
 	return chars_out
+	
+#TODO: 		--->	needs to be replaced!	
+def isUnicode(c):
+	try:
+		c.encode("ascii")
+		return False
+	except UnicodeEncodeError:
+		return True		
 
 def replaceCharsDefault(unicode_chars_in):
 	ascii_chars_out = ""
 	for c in unicode_chars_in:
-		try:
+		if not isUnicode(c):
 			ascii_chars_out += c.encode("ascii")
-		except UnicodeEncodeError:
+		else:
 			ascii_chars_out += "?"	
 	return ascii_chars_out
 	
