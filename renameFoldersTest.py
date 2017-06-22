@@ -24,9 +24,13 @@ class renamerTestCase(unittest.TestCase):
 		after = ["2017 - 06 - 17", "Vút Thai \"Hai\"", "Mauricè Paul Bonk"]
 		self.assertEqual(after, renameFolders.splitFolderName(before))
 		
-		before = "2017 - 06 - 17 - Vút (Thai) ('Hai') (Mauricè Paul Bonk)"
+		before = "2017 - 06 - 17 - Vút (Thai) ('Hai') (Mauricè Paul Bonk)"						#TODO: remove brackets!
 		after = ["2017 - 06 - 17", "Vút (Thai) ('Hai')", "Mauricè Paul Bonk"]
 		self.assertEqual(after, renameFolders.splitFolderName(before))	
+		
+		before = "2017 - 06 - 17 - Taj Mahal (DD) (Bork)"
+		after = ["2017 - 06 - 17", "Taj Mahal (DD)", "Bork"]
+		self.assertEqual(after, renameFolders.splitFolderName(before))
 			
 	def testFormatDate(self):
 		before = "2017 - 06 - 17"
@@ -47,26 +51,33 @@ class renamerTestCase(unittest.TestCase):
 		after = "2017-06-17__Vut_Thai_\"Hai\"?__Maurice_Paul_Bonk"
 		self.assertEqual(after, renameFolders.formatFolderName(before))	
 		
-	def testRenameFolder(self):
+	def testRenameAccountFolder(self):
 		before = u"2017 - 06 - 17 - Vút Thai \"Hai\"使 (Mauricè Paul Bonk)"
 		after = "2017-06-17__Vut_Thai_\"Hai\"?__Maurice_Paul_Bonk"
 		before_dir = os.path.join(os.getcwd(), before)
 		after_dir = os.path.join(os.getcwd(), after)
-# 		try:
- 		os.mkdir(before_dir)
-# 		except:
-# 			print "ERROR! Can't create directory."
-# 			return
-# 		try:		
-# 			self.assertFalse(os.path.isdir(before_dir))
-		self.assertEqual(after_dir, renameFolders.renameFolder(before_dir))
-		self.assertTrue(os.path.isdir(after_dir))
-#  		finally:
-#  			return
-# 			if os.path.isdir(before_dir):
-# 				os.rmdir(before_dir)
-# 			if os.path.isdir(after_dir):
-# 				os.rmdir(after_dir)
+ 		os.mkdir(before_dir)		
+ 		try:
+			self.assertEqual(after_dir, renameFolders.renameAccountFolder(before_dir))
+			self.assertTrue(os.path.isdir(after_dir))
+		except:
+			os.rmdir(before_dir)
+			raise
+		os.rmdir(after_dir)	
+
+	def testRenameSubfolderOrFile(self):
+		before = u"Kündígung Unterlagen \"Hai\"使"
+		after = "Kuendigung_Unterlagen_\"Hai\"?"
+		before_name = os.path.join(os.getcwd(), before)
+		after_name = os.path.join(os.getcwd(), after)
+		os.mkdir(before_name)
+		try:
+			self.assertEqual(after_name, renameFolders.renameSubfolderOrFile(before_name))
+			self.assertTrue(os.path.exists(after_name))
+		except:
+			os.rmdir(before_name)
+			raise
+		os.rmdir(after_name)		
 
 	def testReplaceCharsByTranslators(self):
 		before = u"ä ö ü á é ú ó í à è ù ò ì â ê û ô î ß"

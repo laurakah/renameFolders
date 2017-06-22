@@ -36,10 +36,19 @@ def formatFolderName(oldFolderName):
 	newFolderName = replaceCharacters.replaceChars(newFolderName)
 	return newFolderName
 	
-def renameFolder(before_dir):
+def renameAccountFolder(before_dir):
 	after_dir = ""
 	oldFolderName = os.path.basename(before_dir)
  	newFolderName = formatFolderName(oldFolderName)
 	after_dir = os.path.join(os.path.split(before_dir)[0], newFolderName)
 	os.rename(before_dir, after_dir)
 	return after_dir	
+	
+def renameSubfolderOrFile(before_name):
+	after_name = ""
+	oldName = os.path.basename(before_name)
+ 	newName = replaceCharacters.replaceChars(oldName)
+ 	after_name = os.path.join(os.path.split(before_name)[0], newName)
+ 	os.rename(before_name, after_name)
+	return after_name
+	
