@@ -20,7 +20,9 @@ TRANSLATE = {
 	u"î": "i",
 	u"ô": "o",
 	u"û": "u",
-	u" ": "_"
+	u" ": "_",
+	u"(": "",
+	u")": ""
 }
 
 def replaceCharsByTranslators(chars_in):

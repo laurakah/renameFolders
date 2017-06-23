@@ -80,8 +80,8 @@ class renamerTestCase(unittest.TestCase):
 		os.rmdir(after_name)		
 
 	def testReplaceCharsByTranslators(self):
-		before = u"ä ö ü á é ú ó í à è ù ò ì â ê û ô î ß"
-		after = "ae_oe_ue_a_e_u_o_i_a_e_u_o_i_a_e_u_o_i_ss"
+		before = u"ä ö ü á é ú ó í à è ù ò ì â ê û ô î ß ( )"
+		after = "ae_oe_ue_a_e_u_o_i_a_e_u_o_i_a_e_u_o_i_ss__"
 		self.assertEqual(after, replaceCharacters.replaceCharsByTranslators(before))	
 		
 	def testReplaceCharsDefault(self):
