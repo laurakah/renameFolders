@@ -19,7 +19,7 @@ def formatDate(date_in):
 	if not res:
 		date_out = ""
 	else:
-		date_out = "%s%s%s%s%s" % (res.group("year"), dateSep, res.group("month"), dateSep,  res.group("day"))	
+		date_out = "%s%s%s%s%s" % (res.group("year"), dateSep, res.group("month"), dateSep, res.group("day"))	
 	return date_out		
 	
 def addSeperators(array_out):
@@ -33,13 +33,14 @@ def formatFolderName(oldFolderName):
 	folderNameParts = splitFolderName(oldFolderName)
 	folderNameParts[0] = formatDate(folderNameParts[0])
 	newFolderName = addSeperators(folderNameParts)
-	newFolderName = replaceCharacters.replaceChars(newFolderName)
+# 	newFolderName = replaceCharacters.replaceChars(newFolderName)
 	return newFolderName
 	
 def renameAccountFolder(before_dir):
 	after_dir = ""
 	oldFolderName = os.path.basename(before_dir)
  	newFolderName = formatFolderName(oldFolderName)
+#  	newFolderName = replaceCharacters.replaceChars(newFolderName)
 	after_dir = os.path.join(os.path.split(before_dir)[0], newFolderName)
 	os.rename(before_dir, after_dir)
 	return after_dir	
@@ -52,3 +53,14 @@ def renameSubfolderOrFile(before_name):
  	os.rename(before_name, after_name)
 	return after_name
 	
+def renameAll(parentDir):
+	for d in os.listdir(parentDir):
+		absolutePath = os.path.join(parentDir, d)
+ 		newPathFormat = renameAccountFolder(absolutePath)
+ 		formatedFolderName = os.path.basename(newPathFormat)
+		newFolderName = replaceCharacters.replaceCharsByTranslators(formatedFolderName)
+		newFolderName = replaceCharacters.replaceCharsDefault(newFolderName)
+		print "XXXXXXXXX %s XXXXXXX" % newFolderName
+		after_dir = os.path.join(os.path.split(absolutePath)[0], newFolderName)
+		os.rename(newPathFormat, after_dir)
+	return	
