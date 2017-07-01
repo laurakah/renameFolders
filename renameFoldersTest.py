@@ -62,14 +62,29 @@ class renamerTestCase(unittest.TestCase):
 		after = "2016-08-23__Restauränt ობסת Bistro__T. Schlößer"
 		self.assertEqual(after, renameFolders.formatFolderName(before))		
 		
-	def testRenameAccountFolder(self):
+# 	def testRenameAccountFolder(self):
+# 		before = "2017 - 06 - 17 - Vút Thai \"Hai\"使 (Mauricè Paul Bonk)"
+# 		after = "2017-06-17__Vút Thai \"Hai\"使__Mauricè Paul Bonk"
+# 		before_dir = os.path.join(os.getcwd(), before)
+# 		after_dir = os.path.join(os.getcwd(), after)
+#  		os.mkdir(before_dir)		
+#  		try:
+# 			self.assertEqual(after_dir, renameFolders.renameAccountFolder(before_dir))
+# 			self.assertTrue(os.path.isdir(after_dir))
+# 		except:
+# 			os.rmdir(before_dir)
+# 			raise
+# 		os.rmdir(after_dir)
+		
+	def testRenameAndReplaceCharsAccountFolder(self):
 		before = "2017 - 06 - 17 - Vút Thai \"Hai\"使 (Mauricè Paul Bonk)"
-		after = "2017-06-17__Vút Thai \"Hai\"使__Mauricè Paul Bonk"
+		after = "2017-06-17__Vut_Thai_\"Hai\"?__Maurice_Paul_Bonk"
 		before_dir = os.path.join(os.getcwd(), before)
 		after_dir = os.path.join(os.getcwd(), after)
  		os.mkdir(before_dir)		
  		try:
-			self.assertEqual(after_dir, renameFolders.renameAccountFolder(before_dir))
+ 			formatedFolderName = renameFolders.renameAccountFolder(before_dir)
+			self.assertEqual(after_dir, replaceCharacters.replaceChars(formatedFolderName))
 			self.assertTrue(os.path.isdir(after_dir))
 		except:
 			#os.rmdir(before_dir)
