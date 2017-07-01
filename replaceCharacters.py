@@ -27,7 +27,8 @@ TRANSLATE = {
 
 def replaceCharsByTranslators(chars_in):
 	chars_out = ""
-	chars_in = unicode(chars_in, "utf-8")
+	if not isinstance(chars_in, unicode):
+		chars_in = unicode(chars_in, "utf-8")
 	#print "\"%s\" is %s" % (chars_in, type(chars_in))
 	for c in chars_in:
 		if c in TRANSLATE.keys():

@@ -94,6 +94,7 @@ class renamerTestCase(unittest.TestCase):
 		
 		testDirName = "renameAllTest"
 		testDir = os.path.join(os.getcwd(), testDirName)
+		#testDir = "/Volumes/TESTDISK/renameAllTest"
 		
 		#test folders need to end with '/' in order to create them!
 		
@@ -110,14 +111,14 @@ class renamerTestCase(unittest.TestCase):
 		
 		before = [
 			"2017 - 06 - 17 - Vút Thäi Hai使 (Mauricè Paul Bonk)/",
-			"2017 - 06 - 17 - Vút Thäi Hai使 (Mauricè Paul Bonk)/Kündigung (2017)/",
-			"2017 - 06 - 17 - Vút Thäi Hai使 (Mauricè Paul Bonk)/Kündigung (2017)/Kündigung.txt"
+#			"2017 - 06 - 17 - Vút Thäi Hai使 (Mauricè Paul Bonk)/Kündigung (2017)/",
+#			"2017 - 06 - 17 - Vút Thäi Hai使 (Mauricè Paul Bonk)/Kündigung (2017)/Kündigung.txt"
 		]
 		
 		after = [
-			"2017-06-17__Vut_Thaei_Hai?__Maurice_Paul_Bonk)/",
-			"2017-06-17__Vut_Thaei_Hai?__Maurice_Paul_Bonk)/Kuendigung_2017/",
-			"2017-06-17__Vut_Thaei_Hai?__Maurice_Paul_Bonk)/Kuendigung_2017/Kuendigung.txt"
+			"2017-06-17__Vut_Thaei_Hai?__Maurice_Paul_Bonk/",
+#			"2017-06-17__Vut_Thaei_Hai?__Maurice_Paul_Bonk/Kuendigung_2017/",
+#			"2017-06-17__Vut_Thaei_Hai?__Maurice_Paul_Bonk/Kuendigung_2017/Kuendigung.txt"
 		]
 		
 		#prepare absolute path:

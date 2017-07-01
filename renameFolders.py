@@ -58,9 +58,16 @@ def renameAll(parentDir):
 		absolutePath = os.path.join(parentDir, d)
  		newPathFormat = renameAccountFolder(absolutePath)
  		formatedFolderName = os.path.basename(newPathFormat)
+ 		formatedFolderName = unicode(formatedFolderName, "utf-8")
+ 		print "1. XXXXXXXXX %s XXXXXXX" % formatedFolderName
 		newFolderName = replaceCharacters.replaceCharsByTranslators(formatedFolderName)
+		print "2. XXXXXXXXX %s XXXXXXX" % newFolderName
+		print "Type of formatedFolderName: %s" % type(formatedFolderName)
+		print "Type of newFolderName: %s" % type(newFolderName)
+		if formatedFolderName == newFolderName:
+			print "NO CHANGE!"
 		newFolderName = replaceCharacters.replaceCharsDefault(newFolderName)
-		print "XXXXXXXXX %s XXXXXXX" % newFolderName
+		print "3. XXXXXXXXX %s XXXXXXX" % newFolderName
 		after_dir = os.path.join(os.path.split(absolutePath)[0], newFolderName)
 		os.rename(newPathFormat, after_dir)
 	return	
